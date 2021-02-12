@@ -107,7 +107,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="createEmployeeEmail">Email Address</label>
-                                        <input type="text" class="form-control" id="createEmployeeEmail" aria-describedby="emailHelp" name="email" placeholder="Enter Email Address">
+                                        <input type="text" class="form-control" id="createEmployeeEmail" aria-describedby="emailHelp" name="email" placeholder="Enter Email Address" required>
                                         <small id="emailHelp" class="form-text text-muted">Enter your email address.</small>
                                     </div>
                                 </div>
@@ -241,7 +241,8 @@
 
                 $("#employeeCreateForm :input").change(function () {
                     $("#employeeCreateForm").data("changed", true);
-                    console.log("Input Changed");
+                    //console.log("Input Changed");
+                    console.log($("#createEmployeeName").val() + " : " + $("#createEmployeeName").val().charCodeAt(0));
                 });
                 
 
@@ -250,6 +251,11 @@
 
             function SaveEmployee() {
                 var id = $("#createEmployeeId").val();
+                var validation = ValidateEmployee();
+                console.log(validation);
+                //if (validation) {
+
+                //}
                 if (id === "0") {
                     CreateEmployee();
                 } else {
@@ -301,7 +307,7 @@
                 console.log("Udate Employee Triggered");
 
                 if ($("#employeeCreateForm").data("changed")) {
-                    console.log("Inside Update: Input changed");
+                    //console.log("Inside Update: Input changed");
 
                     var data = $('#employeeCreateForm').serializeArray();
                     var obj = {};
@@ -338,6 +344,8 @@
                         }
                     });
 
+                } else {
+                    location.reload(false);
                 }
                 
 
@@ -465,6 +473,56 @@
                     }
                 });    
             }
+
+            function ValidateEmployee() {
+
+                //var _name = $('#createEmployeeName').val();
+                //var _nid = $('#createEmployeeNID').val();
+                //var _phone = $('#createEmployeePhone').val();
+                //var _email = $('#createEmployeeEmail').val();
+                //var _address = $('#createEmployeeAddress').val();
+
+
+
+                return true;
+            }
+
+            function ValidateName() {
+                var _name = $('#createEmployeeName').val();
+                _name = _name.trim();
+
+                if (_name === null) {
+                    return false;
+                } else {
+                    return true;
+                }
+                
+            }
+
+            @*function ValidateEmail() {
+                var _email = $('#createEmployeeEmail').val();
+                _email = _email.trim();
+
+                if (_email === null) {
+                    return false;
+                } else {
+                    var _emailArr = _email.split("@");
+                    if (_emailArr.length == 2) {
+
+                        for (var i = 0; i < _emailArr[0].length; i++) {
+                            if()
+                        }
+
+                    } else {
+                        return false;
+                    }
+
+
+                    //return true;
+                }
+
+            }*@
+
 
         </script>
     }
