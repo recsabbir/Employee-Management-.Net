@@ -430,7 +430,7 @@ _[Ss]cripts
 *.dot[Cc]over
 
 # Uploade Image Files of Employees
-Content/Employees/*.jpg
-Content/Employees/*.png
-Content/Employees/*.gif
-Content/Employees/*.jpeg
+/Content/Employees/*.jpg
+/Content/Employees/*.png
+/Content/Employees/*.gif
+/Content/Employees/*.jpeg
