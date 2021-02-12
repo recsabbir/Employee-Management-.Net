@@ -230,21 +230,13 @@
                 
                 GetData();
                 $("#buttonCreateEmployee").click(function () {
-                    //console.log("I'm clicked")
-                    //CreateEmployee();
                     SaveEmployee();
                 });
 
                 $("#customFile").on("change", function () {
                     var fileName = $(this).val().split("\\").pop();
                     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-                    ////createEmployeeImageThumbnai
-                    //console.log($("#customFile").val());
-                    //console.log($("#createEmployeeImageThumbnai").attr('src'));
-                    //var path = $("#customFile").val();
-                    ////$("#createEmployeeImageThumbnai").attr('src', path);
-                    //$("#createEmployeeImageThumbnai").attr('src', 'C:/fakepath/images.png');
-                    ////document.getElementById("#createEmployeeImageThumbnai").src = path;
+                    
                 });
 
                 $("#employeeCreateForm :input").change(function () {
@@ -335,7 +327,6 @@
                         method: 'POST',
                         contentType: false,
                         processData: false,
-                        //dataType: "json",
                         data: formData,
                         success: function (_data) {
                             console.log("Employee Updated");
@@ -377,9 +368,7 @@
                             abc += '" class="img-thumbnail datatable-employee-photo" alt="Cinque Terre"></td><td>' + _data[i].name + '</td> <td>' + _data[i].email + '</td> <td>' + _data[i].phone + '</td>';
                             abc += '<td><button class="btn btn-primary textsm" onclick="GetEmployee(' + "'" + _data[i].id + "'" + ')"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp;Edit</button> ';
                             abc += '<a class="btn btn-danger trigger-btn  textsm" onclick="SelectToDeleteEmployee(' + "'" + _data[i].id +"'"+ ')" href="#DeleteModal" data-toggle="modal"><i class="fa fa-trash fa-fw" aria-hidden="true"></i>&nbsp;Delete</a></td ></tr > ';
-                            //abc += '<div id="myModal-' + _data[i].id + 'class="modal fade"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-header flex-column"><div><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>&nbsp;Are you sure?</div></div><div class="modal-body"><p>Do you really want to delete these records? <br> This process cannot be undone.</p></div><div class="modal-footer justify-content-center">'
-                            //abc += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button><a class="btn btn-danger" onclick="DeleteEmployee(' + _data[i].id +')">Delete</a></div ></div > </div > </div > </tr>'
-   
+                            
                         }
 
                         $("#myTable tbody").html(abc);
@@ -413,14 +402,12 @@
                             document.getElementById("createEmployeeImageThumbnai").src = "/Content/Logo/Employee.jpg";
                         }
 
-                        console.log(Date.parse(_data.dob));
-
                         var date;
                         var DOB;
 
                         if (_data.dob !== null) {
                             date = new Date(parseInt(_data.dob.substr(6)));
-                            console.log(date);
+                            
                             DOB = date.getFullYear();
 
                             if (date.getMonth() < "9") {
@@ -447,8 +434,6 @@
                         $('#createEmployeeAddress').val(_data.address);
                         $('#buttonCreateEmployee').val("UPDATE");
                         
-
-                        //$consol.log(_data.dob);
                     },
                     error: function (res) {
                         console.log(res);
@@ -474,7 +459,6 @@
                         contentType: 'application/json; charset=utf-8',
                         dataType: 'json',
                         success: function (_data) {
-                            //refreshPage();
                             location.reload(true);
                         },
                         error: function (res) {
