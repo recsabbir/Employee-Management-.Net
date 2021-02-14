@@ -429,7 +429,7 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 
-# Uploade Image Files of Employees
+# Uploaded Image Files of Employees
 Content/Employees/*.jpg
 Content/Employees/*.png
 Content/Employees/*.gif
